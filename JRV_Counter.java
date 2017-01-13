@@ -4,8 +4,8 @@ package jrv_counter;
  * JRV_Counter by James R. Vaughan
  * Exercise in multi-threading.
  * This program uses 10 threads to increment two ints from 1 to 5000
- * As you can see from the sample output, thread ID 4 doesn't get allowed into the action.
- * However, all the other threads do get to increment n1 and n2.
+ * As you can see from the sample output, all the threads get allowed into the action.
+ * However, this is usually not the case with most runs.
  * Which threads get to increment n1 and n2 varies randomly from run to run.
  * The previous time I ran this, threads 7, 8, and 9 didn't get to increment
  * n1 and n2.
