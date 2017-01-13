@@ -1,9 +1,14 @@
 package jrv_counter;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * JRV_Counter by James R. Vaughan
+ * Exercise in multi-threading.
+ * This program uses 10 threads to increment two ints from 1 to 5000
+ * As you can see from the sample output, all the threads get allowed into the action.
+ * However, this is usually not the case with most runs.
+ * Which threads get to increment n1 and n2 varies randomly from run to run.
+ * The previous time I ran this, threads 7, 8, and 9 didn't get to increment
+ * n1 and n2.
  */
 
 import java.lang.*;
@@ -19,7 +24,7 @@ import java.util.*;
 public class JRV_Counter {
 
     private int count1 = 0, count2 = 0;
-    private int max_count = 1000;
+    private int max_count = 5000;
     private int number_of_threads = 10;
     private int threads_quit;
 
@@ -28,21 +33,23 @@ public class JRV_Counter {
 		startThreads();
 	}
 	
-	public synchronized int getNextNumber1(){
+	public synchronized int getNextNumber1(int _number){
 		int temp;
 		if(count1 < max_count) 
 		{  	temp = count1;
 			count1 = count1 + 1;
+                        System.out.println("Thread ID " + _number + " N1 " + temp);
 		        return(temp);
 		}
 		else return(-1);
 	}
 	
-	public synchronized int getNextNumber2(){
+	public synchronized int getNextNumber2(int _number){
 		int temp;
 		if(count2 < max_count) 
 		{  	temp = count2;
 			count2 = count2 + 1;
+                        System.out.println("Thread ID " + _number + " N2 " + temp);
 		        return(temp);
 		}
 		else return(-1);
@@ -82,16 +89,16 @@ public class JRV_Counter {
 			
 			synchronized(parent)
 			{
-				n1 = parent.getNextNumber1(); 
-				n2 = parent.getNextNumber2();
+				n1 = parent.getNextNumber1(number); 
+				n2 = parent.getNextNumber2(number);
 			}
 			
 			while (n1 != -1 && n2 != -1 && n1 == n2) {
 
 				synchronized(parent)
 				{
-					n1=parent.getNextNumber1();
-					n2=parent.getNextNumber2();
+					n1=parent.getNextNumber1(number);
+					n2=parent.getNextNumber2(number);
 				}
 			}
 			if (n1 != n2)
