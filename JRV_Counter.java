@@ -8,7 +8,7 @@ package jrv_counter;
  * However, this is usually not the case with most runs.
  * Which threads get to increment n1 and n2 varies randomly from run to run.
  * The previous time I ran this, threads 7, 8, and 9 didn't get to increment
- * n1 and n2.
+ * count1 and count2.
  */
 
 import java.lang.*;
