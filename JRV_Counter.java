@@ -38,7 +38,7 @@ public class JRV_Counter {
 		if(count1 < max_count) 
 		{  	temp = count1;
 			count1 = count1 + 1;
-                        System.out.println("Thread ID " + _number + " N1 " + temp);
+                        System.out.println("Thread ID " + _number + " count1 " + count1);
 		        return(temp);
 		}
 		else return(-1);
@@ -49,7 +49,7 @@ public class JRV_Counter {
 		if(count2 < max_count) 
 		{  	temp = count2;
 			count2 = count2 + 1;
-                        System.out.println("Thread ID " + _number + " N2 " + temp);
+                        System.out.println("Thread ID " + _number + " count2 " + count2);
 		        return(temp);
 		}
 		else return(-1);
