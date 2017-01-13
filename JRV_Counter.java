@@ -8,7 +8,7 @@ package jrv_counter;
  * However, this is usually not the case with most runs.
  * Which threads get to increment n1 and n2 varies randomly from run to run.
  * The previous time I ran this, threads 7, 8, and 9 didn't get to increment
- * n1 and n2.
+ * count1 and count2.
  */
 
 import java.lang.*;
@@ -38,7 +38,7 @@ public class JRV_Counter {
 		if(count1 < max_count) 
 		{  	temp = count1;
 			count1 = count1 + 1;
-                        System.out.println("Thread ID " + _number + " N1 " + temp);
+                        System.out.println("Thread ID " + _number + " count1 " + count1);
 		        return(temp);
 		}
 		else return(-1);
@@ -49,7 +49,7 @@ public class JRV_Counter {
 		if(count2 < max_count) 
 		{  	temp = count2;
 			count2 = count2 + 1;
-                        System.out.println("Thread ID " + _number + " N2 " + temp);
+                        System.out.println("Thread ID " + _number + " count2 " + count2);
 		        return(temp);
 		}
 		else return(-1);
